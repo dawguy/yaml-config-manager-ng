@@ -1,9 +1,46 @@
 import { Injectable } from '@angular/core';
+import {from, Observable, of, tap} from "rxjs";
+import {FileInfo} from "./FileInfo";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {FileInfoResponse} from "./file-info-response";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileInfoService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    })
+  };
+
+  getFileInfo(fileName: string) : Observable<FileInfo[]> {
+    const data = {
+      fileName: fileName,
+    };
+
+    return new Observable<FileInfo[]>(subscriber =>  {
+      this.http.post<FileInfoResponse>("http://localhost:3000/get-file-info-by-name", data, this.httpOptions)
+        .subscribe(resp => {
+          subscriber.next(resp.body);
+          subscriber.complete();
+        })
+    })
+  }
+
+  getFileInfos(environment: string) : Observable<FileInfo[]> {
+    const data = {
+      env: environment,
+    };
+    return new Observable<FileInfo[]>(subscriber => {
+      this.http.post<FileInfoResponse>("http://localhost:3000/get-file-info-env", data, this.httpOptions)
+        .subscribe(resp => {
+          subscriber.next(resp.body);
+          subscriber.complete();
+        })
+    })
+  }
 }

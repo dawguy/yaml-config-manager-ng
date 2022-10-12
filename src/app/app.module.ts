@@ -11,6 +11,7 @@ import { FilePropertiesComponent } from './file-properties/file-properties.compo
 import { YamlInfoComponent } from './yaml-info/yaml-info.component';
 import { SpringInfoComponent } from './spring-info/spring-info.component';
 import { ApplyPropertiesComponent } from './apply-properties/apply-properties.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ApplyPropertiesComponent } from './apply-properties/apply-properties.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

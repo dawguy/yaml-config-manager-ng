@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FileInfo} from "../FileInfo";
 
 @Component({
   selector: 'app-spring-info',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./spring-info.component.css']
 })
 export class SpringInfoComponent implements OnInit {
+
+  @Input() fileInfo?: FileInfo;
 
   constructor() { }
 

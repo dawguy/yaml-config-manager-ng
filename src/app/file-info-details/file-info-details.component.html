@@ -1,1 +1,19 @@
-<p>file-info-details works!</p>
+<div *ngIf="fileInfo">
+  <h1>{{fileInfo.name}}</h1>
+  <div>
+    <h2>Environment Details</h2>
+    <ul>
+      <li>Environment: {{fileInfo.env}}</li>
+      <li>Service: {{fileInfo.service}}</li>
+      <li>File Name: {{fileInfo.name}}</li>
+    </ul>
+  </div>
+
+  <div *ngIf="fileInfo.yaml">
+    <app-yaml-info [fileInfo]="fileInfo"></app-yaml-info>
+  </div>
+
+  <div *ngIf="fileInfo['spring-properties']">
+    <app-spring-info [fileInfo]="fileInfo"></app-spring-info>
+  </div>
+</div>

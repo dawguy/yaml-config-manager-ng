@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {EnvService} from "../env.service";
+import {Env} from "../Env";
 
 @Component({
   selector: 'app-file-explorer',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileExplorerComponent implements OnInit {
 
-  constructor() { }
+  envs: Env[] = [];
+
+  constructor(private envService: EnvService) { }
 
   ngOnInit(): void {
+    this.envService.getEnvs()
+      .subscribe((envs) => {
+        this.envs = envs;
+      })
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FileInfo} from "../FileInfo";
 
 @Component({
   selector: 'app-yaml-info',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./yaml-info.component.css']
 })
 export class YamlInfoComponent implements OnInit {
+
+  @Input() fileInfo?: FileInfo;
 
   constructor() { }
 
