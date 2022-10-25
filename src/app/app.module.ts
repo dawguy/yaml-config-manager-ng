@@ -12,6 +12,7 @@ import { YamlInfoComponent } from './yaml-info/yaml-info.component';
 import { SpringInfoComponent } from './spring-info/spring-info.component';
 import { ApplyPropertiesComponent } from './apply-properties/apply-properties.component';
 import { HttpClientModule } from '@angular/common/http';
+import { YamlBlockComponent } from './yaml-block/yaml-block.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     FilePropertiesComponent,
     YamlInfoComponent,
     SpringInfoComponent,
-    ApplyPropertiesComponent
+    ApplyPropertiesComponent,
+    YamlBlockComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FileInfo} from "../FileInfo";
+import {SpringProperty} from "../SpringProperty";
 
 @Component({
   selector: 'app-spring-info',
@@ -8,7 +9,7 @@ import {FileInfo} from "../FileInfo";
 })
 export class SpringInfoComponent implements OnInit {
 
-  @Input() fileInfo?: FileInfo;
+  @Input() springProperties: SpringProperty[] = [];
 
   constructor() { }
 

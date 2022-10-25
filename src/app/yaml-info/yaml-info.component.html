@@ -1,1 +1,6 @@
-<p>yaml-info works!</p>
+<h1>Yaml Properties</h1>
+<div *ngIf="fileInfo">
+  <div *ngFor="let yaml of yamlProperties">
+    <app-yaml-block [yamlProperty]="yaml"></app-yaml-block>
+  </div>
+</div>

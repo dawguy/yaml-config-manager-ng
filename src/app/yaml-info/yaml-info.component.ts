@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {FileInfo} from "../FileInfo";
+import {YamlProperty} from "../YamlProperty";
+import {YamlService} from "../yaml.service";
 
 @Component({
   selector: 'app-yaml-info',
@@ -9,10 +11,21 @@ import {FileInfo} from "../FileInfo";
 export class YamlInfoComponent implements OnInit {
 
   @Input() fileInfo?: FileInfo;
+  yamlProperties: YamlProperty[] = [];
 
-  constructor() { }
+  constructor(private yamlService: YamlService) { }
 
   ngOnInit(): void {
+    if(this.fileInfo) {
+      this.yamlProperties = this.yamlService.parse(this.fileInfo.yaml);
+    }
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.fileInfo) {
+      const fileInfo: FileInfo = changes['fileInfo'].currentValue;
+      console.log(changes, fileInfo.yaml);
+      this.yamlProperties = this.yamlService.parse(fileInfo.yaml);
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {from, Observable, of, tap} from "rxjs";
+import {from, map, Observable, of, tap} from "rxjs";
 import {FileInfo} from "./FileInfo";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {FileInfoResponse} from "./file-info-response";
@@ -22,25 +22,16 @@ export class FileInfoService {
       fileName: fileName,
     };
 
-    return new Observable<FileInfo[]>(subscriber =>  {
-      this.http.post<FileInfoResponse>("http://localhost:3000/get-file-info-by-name", data, this.httpOptions)
-        .subscribe(resp => {
-          subscriber.next(resp.body);
-          subscriber.complete();
-        })
-    })
+    return this.http.post<FileInfoResponse>("http://localhost:3000/get-file-info-by-name", data, this.httpOptions)
+        .pipe(map((resp) => resp.body));
   }
 
   getFileInfos(environment: string) : Observable<FileInfo[]> {
     const data = {
       env: environment,
     };
-    return new Observable<FileInfo[]>(subscriber => {
-      this.http.post<FileInfoResponse>("http://localhost:3000/get-file-info-env", data, this.httpOptions)
-        .subscribe(resp => {
-          subscriber.next(resp.body);
-          subscriber.complete();
-        })
-    })
+
+    return this.http.post<FileInfoResponse>("http://localhost:3000/get-file-info-env", data, this.httpOptions)
+      .pipe(map((resp) => resp.body));
   }
 }

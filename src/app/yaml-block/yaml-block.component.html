@@ -1,0 +1,13 @@
+<div>
+  <div *ngIf="yamlProperty">
+    <div *ngIf="yamlProperty.children.length > 0">
+      {{yamlProperty.key}}
+    </div>
+    <div *ngIf="yamlProperty.children.length == 0">
+      {{yamlProperty.key}}: {{yamlProperty.val}}
+    </div>
+    <div class="ml-2 pl-2" *ngFor="let child of yamlProperty.children">
+      <app-yaml-block [yamlProperty]="child"></app-yaml-block>
+    </div>
+  </div>
+</div>
