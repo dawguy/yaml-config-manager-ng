@@ -1,4 +1,11 @@
-<h1>Envs</h1>
-<div *ngFor="let env of envs">
-  <a routerLink="null">{{env.name}}</a>
+<h1 class="mt-3 text-3xl text-slate-900 pb-4">Environments</h1>
+<div class="flex flex-row space-x-2">
+  <div *ngFor="let env of envs">
+    <button class="btn btn-blue" (click)="onSelect(env)">{{env.name}}</button>
+  </div>
+</div>
+
+<div *ngFor="let fileInfo of fileInfos" class="py-4">
+  <app-file-info-details [fileInfo]="fileInfo" [displayYaml]="false" [displaySpringProperties]="false"></app-file-info-details>
+  <a class="a" routerLink="/fileInfo/{{fileInfo.name}}">View More</a>
 </div>

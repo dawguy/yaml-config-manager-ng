@@ -1,7 +1,7 @@
-<div *ngIf="fileInfo">
-  <h1>{{fileInfo.name}}</h1>
-  <div>
-    <h2>Environment Details</h2>
+<div class="px-4 py-2" *ngIf="fileInfo">
+  <h1 class="text-xl">{{fileInfo.name}}</h1>
+  <div class="p-2">
+    <h2 class="font">Environment Details</h2>
     <ul>
       <li>Environment: {{fileInfo.env}}</li>
       <li>Service: {{fileInfo.service}}</li>
@@ -9,11 +9,11 @@
     </ul>
   </div>
 
-  <div *ngIf="fileInfo.yaml">
-    <app-yaml-info [fileInfo]="fileInfo"></app-yaml-info>
+  <div *ngIf="fileInfo.yaml && displayYaml">
+    <app-yaml-info class="p-2" [fileInfo]="fileInfo"></app-yaml-info>
   </div>
 
-  <div *ngIf="fileInfo['spring-properties']">
-    <app-spring-info [springProperties]="fileInfo['spring-properties']"></app-spring-info>
+  <div *ngIf="fileInfo['spring-properties'] && displaySpringProperties">
+    <app-spring-info class="p-2" [springProperties]="fileInfo['spring-properties']"></app-spring-info>
   </div>
 </div>

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FileInfoService} from "../file-info.service";
-import {FileInfo} from "../FileInfo";
+import {FileInfo} from "../domain/FileInfo";
 import {Location} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {LogService} from "../log.service";
@@ -12,7 +12,9 @@ import {LogService} from "../log.service";
 })
 export class FileInfoDetailsComponent implements OnInit {
 
-  fileInfo?: FileInfo;
+  @Input() fileInfo?: FileInfo;
+  @Input() displayYaml: boolean = true;
+  @Input() displaySpringProperties: boolean = true;
 
   constructor(private fileInfoService: FileInfoService,
               private route: ActivatedRoute,

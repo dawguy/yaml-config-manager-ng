@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
-import {FileInfo} from "../FileInfo";
-import {YamlProperty} from "../YamlProperty";
+import {FileInfo} from "../domain/FileInfo";
+import {YamlProperty} from "../domain/YamlProperty";
 import {YamlService} from "../yaml.service";
 
 @Component({

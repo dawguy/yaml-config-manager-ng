@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {YamlProperty} from "../YamlProperty";
+import {YamlProperty} from "../domain/YamlProperty";
 
 @Component({
   selector: 'app-yaml-block',

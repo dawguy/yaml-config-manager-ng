@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {YamlProperty} from "./YamlProperty";
+import {YamlProperty} from "./domain/YamlProperty";
 
 @Injectable({
   providedIn: 'root'

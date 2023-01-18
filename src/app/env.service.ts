@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {map, Observable} from "rxjs";
-import {Env} from "./Env";
+import {Env} from "./domain/Env";
 import {EnvResponse} from "./env-response";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 

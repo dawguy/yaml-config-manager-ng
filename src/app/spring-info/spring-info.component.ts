@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FileInfo} from "../FileInfo";
-import {SpringProperty} from "../SpringProperty";
+import {FileInfo} from "../domain/FileInfo";
+import {SpringProperty} from "../domain/SpringProperty";
 
 @Component({
   selector: 'app-spring-info',

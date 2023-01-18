@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {from, map, Observable, of, tap} from "rxjs";
-import {FileInfo} from "./FileInfo";
+import {FileInfo} from "./domain/FileInfo";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {FileInfoResponse} from "./file-info-response";
 
