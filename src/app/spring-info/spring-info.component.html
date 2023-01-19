@@ -1,5 +1,8 @@
 <div>
-  <div class="text-xl">Spring Properties</div>
+  <div class="flex space-x-3">
+    <div class="text-xl">Spring Properties</div>
+    <button class="btn btn-blue text-xs" (click)="copy(springProperties)">Copy</button>
+  </div>
   <div class="px-2" *ngFor="let property of springProperties">
     {{property.prop}}={{property.val}}
   </div>

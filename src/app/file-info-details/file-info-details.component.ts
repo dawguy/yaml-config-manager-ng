@@ -14,6 +14,7 @@ import {filter, flatMap, from, map, mergeMap, toArray} from "rxjs";
 export class FileInfoDetailsComponent implements OnInit {
 
   @Input() fileInfo?: FileInfo;
+  @Input() environmentAsTitle?: boolean = false;
   @Input() displayYaml: boolean = true;
   @Input() displaySpringProperties: boolean = true;
 

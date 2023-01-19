@@ -1,1 +1,5 @@
-<p>file-comparer works!</p>
+<div>
+  <div *ngFor="let fileInfo of fileInfos">
+    <app-file-info-details [environmentAsTitle]=true [fileInfo]="fileInfo"></app-file-info-details>
+  </div>
+</div>

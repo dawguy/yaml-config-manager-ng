@@ -1,4 +1,7 @@
-<h1 class="text-xl">Yaml Properties</h1>
+<div class="flex space-x-3">
+  <h1 class="text-xl">Yaml Properties</h1>
+  <button class="btn btn-blue text-xs" (click)="copy(yamlProperties)">Copy</button>
+</div>
 <div *ngIf="fileInfo">
   <div class="px-2" *ngFor="let yaml of yamlProperties">
     <app-yaml-block [yamlProperty]="yaml"></app-yaml-block>

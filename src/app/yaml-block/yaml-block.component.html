@@ -1,7 +1,7 @@
 <div>
   <div *ngIf="yamlProperty">
     <div *ngIf="yamlProperty.children.length > 0">
-      {{yamlProperty.key}}
+      {{yamlProperty.key}}:
     </div>
     <div *ngIf="yamlProperty.children.length == 0">
       {{yamlProperty.key}}: {{yamlProperty.val}}

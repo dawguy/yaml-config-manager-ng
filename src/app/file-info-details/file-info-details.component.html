@@ -1,10 +1,16 @@
 <div class="py-2" *ngIf="fileInfo">
-  <h1 class="text-2xl">{{fileInfo.name}}</h1>
-  <ul class="px-2">
-    <li>Environment: {{fileInfo.env}}</li>
-    <li>Service: {{fileInfo.service}}</li>
-    <li>File Name: {{fileInfo.name}}</li>
-  </ul>
+  <div *ngIf="environmentAsTitle; then environmentTitle else nameTitle"></div>
+  <ng-template #environmentTitle>
+    <h1 class="text-3xl">{{fileInfo.env}}</h1>
+  </ng-template>
+  <ng-template #nameTitle>
+    <h1 class="text-3xl">{{fileInfo.name}}</h1>
+    <ul class="px-2">
+      <li>Environment: {{fileInfo.env}}</li>
+      <li>Service: {{fileInfo.service}}</li>
+      <li>File Name: {{fileInfo.name}}</li>
+    </ul>
+  </ng-template>
 
   <div *ngIf="fileInfo.yaml && displayYaml">
     <app-yaml-info class="pl-1"[fileInfo]="fileInfo"></app-yaml-info>

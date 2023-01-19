@@ -28,4 +28,24 @@ export class YamlInfoComponent implements OnInit {
       this.yamlProperties = this.yamlService.parse(fileInfo.yaml);
     }
   }
+
+  copy(yamlProperties: YamlProperty[]): void {
+    const yaml = yamlProperties.map(yamlProperty => this.copyHelper(yamlProperty, ""));
+    const yamlVals = yaml.join("\r\n");
+    navigator.clipboard.writeText(yamlVals);
+  }
+
+  private copyHelper(yamlProperty: YamlProperty, spaces: string): string {
+    const children = yamlProperty.children ? yamlProperty.children : [];
+    const val = typeof yamlProperty.val !== 'object' ? spaces + yamlProperty.key + ": " + yamlProperty.val:
+                                                       spaces + yamlProperty.key + ":";
+
+    if(children.length > 0){
+      return [
+        val
+      ].concat(children.map(child => this.copyHelper(child, spaces + "  "))).join("\r\n");
+    } else {
+      return val;
+    }
+  }
 }
