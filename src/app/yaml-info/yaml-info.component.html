@@ -1,6 +1,6 @@
-<h1>Yaml Properties</h1>
+<h1 class="text-xl">Yaml Properties</h1>
 <div *ngIf="fileInfo">
-  <div *ngFor="let yaml of yamlProperties">
+  <div class="px-2" *ngFor="let yaml of yamlProperties">
     <app-yaml-block [yamlProperty]="yaml"></app-yaml-block>
   </div>
 </div>

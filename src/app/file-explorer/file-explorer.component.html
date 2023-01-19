@@ -5,7 +5,7 @@
   </div>
 </div>
 
-<div *ngFor="let fileInfo of fileInfos" class="py-4">
+<div *ngFor="let fileInfo of fileInfos" class="pt-4">
   <app-file-info-details [fileInfo]="fileInfo" [displayYaml]="false" [displaySpringProperties]="false"></app-file-info-details>
-  <a class="a" routerLink="/fileInfo/{{fileInfo.name}}">View More</a>
+  <a class="a px-2" routerLink="/fileInfo/{{fileInfo.name}}">View More</a>
 </div>
