@@ -4,6 +4,7 @@ import {FileInfo} from "../domain/FileInfo";
 import {Location} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {LogService} from "../log.service";
+import {filter, flatMap, from, map, mergeMap, toArray} from "rxjs";
 
 @Component({
   selector: 'app-file-info-details',
@@ -22,14 +23,20 @@ export class FileInfoDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const name = this.route.snapshot.paramMap.get('name');
+    const env = this.route.snapshot.paramMap.get('env');
 
-    if(!this.fileInfo && name != null) {
+    if(!this.fileInfo && name != null && env != null) {
       this.fileInfoService.getFileInfo(name)
+        .pipe(
+          mergeMap((fileInfos) => from(fileInfos)),
+          filter(fileInfo => fileInfo.env == env),
+          toArray())
         .subscribe(fileInfo => {
           this.LOGGER.info(fileInfo.toString());
           this.fileInfo = fileInfo[0];
         });
+    } else {
+      this.LOGGER.info("Invalid file info : " + name + ", " + env);
     }
   }
-
 }
