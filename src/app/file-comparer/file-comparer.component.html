@@ -15,7 +15,7 @@
     <div class="pt-2">
       <h2 class="text-3xl">{{selectedFileName}}</h2>
     </div>
-    <div class="flex flex-wrap space-x-2">
+    <div class="flex flex-wrap space-x-2 space-y-2">
       <div *ngFor="let fileInfo of fileInfos">
         <div class="px-2 py-2 bg-gray-100 rounded">
           <app-file-info-details [environmentAsTitle]=true [fileInfo]="fileInfo"></app-file-info-details>
