@@ -1,5 +1,26 @@
 <div>
-  <div *ngFor="let fileInfo of fileInfos">
-    <app-file-info-details [environmentAsTitle]=true [fileInfo]="fileInfo"></app-file-info-details>
+  <div *ngIf="fileNames">
+    <div>
+      <h1 class="text-3xl" id="files">Compare Environments</h1>
+      <label for="files" class="italic">Select to compare configs across environments</label>
+    </div>
+    <div class="flex flex-wrap space-x-2">
+      <div *ngFor="let fileName of fileNames">
+        <button class="btn btn-blue" (click)="onSelect(fileName)">{{fileName}}</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedFileName">
+    <div class="pt-2">
+      <h2 class="text-3xl">{{selectedFileName}}</h2>
+    </div>
+    <div class="flex flex-wrap space-x-2">
+      <div *ngFor="let fileInfo of fileInfos">
+        <div class="px-2 py-2 bg-gray-100 rounded">
+          <app-file-info-details [environmentAsTitle]=true [fileInfo]="fileInfo"></app-file-info-details>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

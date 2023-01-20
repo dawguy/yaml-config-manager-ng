@@ -13,7 +13,8 @@ import {YamlProperty} from "../domain/YamlProperty";
 export class FileComparerComponent implements OnInit {
 
   fileInfos?: FileInfo[];
-  @Input() envs?: string[]
+  fileNames?: string[];
+  selectedFileName?: string;
 
   constructor(private fileInfoService: FileInfoService,
               private route: ActivatedRoute,
@@ -21,19 +22,31 @@ export class FileComparerComponent implements OnInit {
 
   ngOnInit(): void {
     const name = this.route.snapshot.paramMap.get('name');
-    const env = this.route.snapshot.paramMap.get('env');
 
-    if(env != null && this.envs === null){
-      this.envs = [env];
-    }
+    this.fileInfoService.getFileNames()
+      .subscribe(fileNames => {
+        this.fileNames = fileNames;
+      })
 
-    if(name != null) {
+    if(this.fileInfos == null && name != null) {
       this.fileInfoService.getFileInfo(name)
         .subscribe(fileInfos => {
           this.fileInfos = fileInfos;
         });
     } else {
       this.LOGGER.info("Invalid file info : " + name);
+    }
+  }
+
+  onSelect(fileName: string): void {
+    if(fileName != null) {
+      this.selectedFileName = fileName;
+      this.fileInfoService.getFileInfo(fileName)
+        .subscribe(fileInfos => {
+          this.fileInfos = fileInfos;
+        });
+    } else {
+      this.LOGGER.info("Invalid file info : " + fileName);
     }
   }
 }

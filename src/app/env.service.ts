@@ -9,10 +9,25 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class EnvService {
 
+  selectedEnv?: Env;
+
   constructor(private http: HttpClient) { }
 
   httpOptions = {
     headers: new HttpHeaders(),
+  }
+
+  getSelectedEnv(): Env | undefined {
+    const selectedEnv = localStorage.getItem("selectedEnv")
+    return {name: selectedEnv} as Env;
+  }
+
+  setSelectedEnv(env?: Env): void {
+    if(env){
+      localStorage.setItem("selectedEnv", env.name);
+    } else {
+      localStorage.removeItem("selectedEnv");
+    }
   }
 
   getEnvs(): Observable<Env[]> {

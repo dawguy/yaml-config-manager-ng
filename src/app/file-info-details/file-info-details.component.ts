@@ -36,8 +36,6 @@ export class FileInfoDetailsComponent implements OnInit {
           this.LOGGER.info(fileInfo.toString());
           this.fileInfo = fileInfo[0];
         });
-    } else {
-      this.LOGGER.info("Invalid file info : " + name + ", " + env);
     }
   }
 }
