@@ -13,6 +13,7 @@ import { SpringInfoComponent } from './spring-info/spring-info.component';
 import { ApplyPropertiesComponent } from './apply-properties/apply-properties.component';
 import { HttpClientModule } from '@angular/common/http';
 import { YamlBlockComponent } from './yaml-block/yaml-block.component';
+import { MigratePropertiesComponent } from './migrate-properties/migrate-properties.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { YamlBlockComponent } from './yaml-block/yaml-block.component';
     YamlInfoComponent,
     SpringInfoComponent,
     ApplyPropertiesComponent,
-    YamlBlockComponent
+    YamlBlockComponent,
+    MigratePropertiesComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {FileInfoResponse} from "./file-info-response";
 import {map, Observable} from "rxjs";
 import {FileInfo} from "./domain/FileInfo";
+import {Env} from "./domain/Env";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,16 @@ export class PropertyService {
       env: env,
     };
     return this.http.post<FileInfoResponse>("http://localhost:3000/apply-properties-env", data, this.httpOptions)
+      .pipe(map((resp) => resp.body));
+  }
+
+  migrateProperties(fromEnv: string, toEnv: string): Observable<FileInfo[]> {
+    const data = {
+      from: {env: fromEnv},
+      to: {env: toEnv},
+    };
+
+    return this.http.post<FileInfoResponse>("http://localhost:3000/migrate-properties-env", data, this.httpOptions)
       .pipe(map((resp) => resp.body));
   }
 }

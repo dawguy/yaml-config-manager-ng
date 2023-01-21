@@ -4,6 +4,7 @@ import {EnvExplorerComponent} from "./env-explorer/env-explorer.component";
 import {FileComparerComponent} from "./file-comparer/file-comparer.component";
 import {FileInfoDetailsComponent} from "./file-info-details/file-info-details.component";
 import {ApplyPropertiesComponent} from "./apply-properties/apply-properties.component";
+import {MigratePropertiesComponent} from "./migrate-properties/migrate-properties.component";
 
 const routes: Routes = [
   {path: 'fileInfo/:env/:name', component: FileInfoDetailsComponent},
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: 'compare', component: FileComparerComponent},
   {path: 'envs', component: EnvExplorerComponent},
   {path: 'apply', component: ApplyPropertiesComponent},
+  {path: 'migrate', component: MigratePropertiesComponent},
   {path: '', component: EnvExplorerComponent},
 ];
 

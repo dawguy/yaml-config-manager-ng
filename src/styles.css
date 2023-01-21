@@ -22,3 +22,7 @@
 .btn-blue:disabled {
   @apply text-gray-200 bg-gray-500 border-gray-700
 }
+
+.btn-blue-selected {
+  @apply bg-blue-700
+}
